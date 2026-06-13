@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Sistema Pralog</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+/* === LAYOUT === */
+body {
+    display: flex;
+    height: 100vh;
+    background: #f4f6f9;
+}
+
+/* === MENU LATERAL === */
+.sidebar {
+    width: 220px;
+    background: #1f2d3d;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    background: #3c4b5c;
+}
+
+/* === CONTEUDO === */
+.main {
+    flex: 1;
+    padding: 40px;
+}
+
+.header {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* === CARDS === */
+.cards {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.desc {
+    font-size: 14px;
+    color: #666;
+}
+
+/* === FOOTER === */
+.footer {
+    position: absolute;
+    bottom: 10px;
+    left: 240px;
+    font-size: 12px;
+    color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div class="sidebar">
+    <h2>📦 Pralog</h2>
+
+    <div class="menu-item" onclick="ir('home')">🏠 Home</div>
+    <div class="menu-item" onclick="ir('mantran')">📄 MANTRAN</div>
+    <div class="menu-item" onclick="ir('emiteai')">🤖 EMITE AI</div>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="main">
+
+    <div class="header">Sistema de Renomeadores</div>
+
+    <div class="cards">
+
+        <!-- MANTRAN -->
+        <div class="card" onclick="abrir('mantran')">
+            <div class="icon">📄</div>
+            <div class="title">Renomeador MANTRAN</div>
+            <div class="desc">CT-e / MDF-e padrão</div>
+        </div>
+
+        <!-- EMITE AI -->
+        <div class="card" onclick="abrir('emiteai')">
+            <div class="icon">🤖</div>
+            <div class="title">Renomeador EMITE AI</div>
+            <div class="desc">Versão Profarma</div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Sistema interno - Grupo Pralog
+</div>
+
+<script>
+
+// ✅ LINKS DOS SISTEMAS
+const links = {
+    mantran: "https://anthonygrupopralog-eng.github.io/renomeador-cte/",
+    emiteai: "https://anthonygrupopralog-eng.github.io/renomeador-cte---EMITEAI-PROFARMA/"
+};
+
+// ✅ ABRIR EM NOVA ABA
+function abrir(tipo) {
+    window.open(links[tipo], "_blank");
+}
+
+// ✅ MENU LATERAL
+function ir(tipo) {
+
+    if (tipo === "home") return;
+
+    window.open(links[tipo], "_blank");
+}
+
+</script>
+
+</body>
+</html>
