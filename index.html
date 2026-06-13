@@ -131,6 +131,7 @@ body {
         <div onclick="abrirSistema('mantran')">📄 MANTRAN</div>
         <div onclick="abrirSistema('emiteai')">🤖 EMITE AI</div>
         <div onclick="abrirSistema('extrator')">🧾 Extrator NF-e</div>
+        <div onclick="abrirSistema('petropolis')">🏭 Extrator Petrópolis</div>
     </div>
 </div>
 
@@ -146,7 +147,7 @@ body {
         </div>
 
         <div class="box">
-            <div class="number">3</div>
+            <div class="number">4</div>
             <div>Sistemas</div>
         </div>
 
@@ -174,6 +175,11 @@ body {
             <p>Ambev</p>
         </div>
 
+        <div class="card" onclick="abrirSistema('petropolis')">
+            <h3>🏭 Extrator Petrópolis</h3>
+            <p>Notas Petrópolis</p>
+        </div>
+
     </div>
 
     <div class="footer">
@@ -188,24 +194,23 @@ body {
 
 <script>
 
-// ✅ TODOS OS LINKS
+// LINKS
 const links = {
     mantran: "https://anthonygrupopralog-eng.github.io/renomeador-cte/",
     emiteai: "https://anthonygrupopralog-eng.github.io/renomeador-cte---EMITEAI-PROFARMA/",
-    extrator: "https://anthonygrupopralog-eng.github.io/Extrator-NF-e---Feito-por-Anthony/"
+    extrator: "https://anthonygrupopralog-eng.github.io/Extrator-NF-e---Feito-por-Anthony/",
+    petropolis: "https://anthonygrupopralog-eng.github.io/extrator-petropolis/"
 };
 
-// ✅ CONTADOR
+// CONTADOR
 let acessos = localStorage.getItem("acessos") || 0;
 acessos++;
 localStorage.setItem("acessos", acessos);
 document.getElementById("acessos").innerText = acessos;
 
-// ✅ ABRIR COM LOADING
+// ABRIR COM LOADING
 function abrirSistema(tipo) {
-
     const loading = document.getElementById("loading");
-
     loading.style.display = "flex";
 
     setTimeout(() => {
