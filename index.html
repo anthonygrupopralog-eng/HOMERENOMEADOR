@@ -19,7 +19,7 @@ body {
 
 /* MENU */
 .sidebar {
-    width: 220px;
+    width: 230px;
     height: 100vh;
     background: #1f2d3d;
     color: white;
@@ -28,10 +28,6 @@ body {
 
 .sidebar h2 {
     margin-bottom: 30px;
-}
-
-.menu {
-    margin-top: 20px;
 }
 
 .menu div {
@@ -54,13 +50,8 @@ body {
 
 /* HEADER */
 .header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-.title {
     font-size: 24px;
+    margin-bottom: 30px;
 }
 
 /* DASHBOARD */
@@ -88,16 +79,18 @@ body {
 .cards {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
-    flex: 1;
+    width: 260px;
     padding: 25px;
     background: white;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .card:hover {
@@ -120,10 +113,8 @@ body {
     align-items: center;
 }
 
-/* FOOTER */
 .footer {
-    margin-top: 50px;
-    text-align: center;
+    margin-top: 40px;
     font-size: 12px;
     color: #777;
 }
@@ -137,21 +128,17 @@ body {
     <h2>📦 Pralog</h2>
 
     <div class="menu">
-        <div onclick="abrir('home')">🏠 Home</div>
-        <div onclick="abrir('mantran')">📄 MANTRAN</div>
-        <div onclick="abrir('emiteai')">🤖 EMITE AI</div>
+        <div onclick="abrirSistema('mantran')">📄 MANTRAN</div>
+        <div onclick="abrirSistema('emiteai')">🤖 EMITE AI</div>
+        <div onclick="abrirSistema('extrator')">🧾 Extrator NF-e</div>
     </div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-    <div class="header">
-        <div class="title">Dashboard</div>
-        <div>👤 Usuário</div>
-    </div>
+    <div class="header">Dashboard</div>
 
-    <!-- DASHBOARD -->
     <div class="dashboard">
         <div class="box">
             <div class="number" id="acessos">0</div>
@@ -159,12 +146,12 @@ body {
         </div>
 
         <div class="box">
-            <div class="number">2</div>
+            <div class="number">3</div>
             <div>Sistemas</div>
         </div>
 
         <div class="box">
-            <div class="number">Ativo</div>
+            <div class="number">Online</div>
             <div>Status</div>
         </div>
     </div>
@@ -173,57 +160,58 @@ body {
     <div class="cards">
 
         <div class="card" onclick="abrirSistema('mantran')">
-            <h2>📄 MANTRAN</h2>
-            <p>Renomeador CT-e/MDF-e</p>
+            <h3>📄 MANTRAN</h3>
+            <p>CT-e / MDF-e padrão</p>
         </div>
 
         <div class="card" onclick="abrirSistema('emiteai')">
-            <h2>🤖 EMITE AI</h2>
+            <h3>🤖 EMITE AI</h3>
             <p>Versão Profarma</p>
+        </div>
+
+        <div class="card" onclick="abrirSistema('extrator')">
+            <h3>🧾 Extrator NF-e</h3>
+            <p>Ambev</p>
         </div>
 
     </div>
 
     <div class="footer">
-        Sistema interno - Grupo Pralog
+        Sistema Pralog - Anthony
     </div>
 
 </div>
 
-<!-- LOADING -->
 <div class="loading" id="loading">
     Carregando sistema...
 </div>
 
 <script>
 
-// LINKS
+// ✅ TODOS OS LINKS
 const links = {
     mantran: "https://anthonygrupopralog-eng.github.io/renomeador-cte/",
-    emiteai: "https://anthonygrupopralog-eng.github.io/renomeador-cte---EMITEAI-PROFARMA/"
+    emiteai: "https://anthonygrupopralog-eng.github.io/renomeador-cte---EMITEAI-PROFARMA/",
+    extrator: "https://anthonygrupopralog-eng.github.io/Extrator-NF-e---Feito-por-Anthony/"
 };
 
-// CONTADOR DE ACESSOS
+// ✅ CONTADOR
 let acessos = localStorage.getItem("acessos") || 0;
 acessos++;
 localStorage.setItem("acessos", acessos);
 document.getElementById("acessos").innerText = acessos;
 
-// ABRIR SISTEMA COM LOADING
+// ✅ ABRIR COM LOADING
 function abrirSistema(tipo) {
 
-    document.getElementById("loading").style.display = "flex";
+    const loading = document.getElementById("loading");
+
+    loading.style.display = "flex";
 
     setTimeout(() => {
         window.open(links[tipo], "_blank");
-        document.getElementById("loading").style.display = "none";
-    }, 800);
-}
-
-// MENU
-function abrir(tipo){
-    if(tipo === "home") return;
-    abrirSistema(tipo);
+        loading.style.display = "none";
+    }, 600);
 }
 
 </script>
